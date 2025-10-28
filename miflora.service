@@ -1,0 +1,30 @@
+[Unit]
+Description=Mi Flora MQTT Daemon
+After=network-online.target bluetooth.service
+Wants=network-online.target bluetooth.service
+
+[Service]
+
+# Run as your 'rob' user
+
+User=rob
+Group=rob
+
+# Run from your home directory
+
+WorkingDirectory=/home/rob
+
+# The full command to run the script
+# We use the python from your venv and pass all the arguments
+
+ExecStart=/home/rob/venv/bin/python /home/rob/miflora_mqtt_daemon.py --broker 192.168.10.200 --device C4:7C:8D:6D:61:6E "Lavendel" --device C4:7C:8D:6D:66:06 "Rozemarijn" --interval 900
+
+# Restart the service if it fails
+
+Restart=on-failure
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
