@@ -1,0 +1,12 @@
+# Bijproducten van macOS, geen werk. `.DS_Store` zijn vensterposities van de
+# Finder; `._*` zijn AppleDouble-bestanden die ontstaan op elk volume dat de
+# metadata niet zelf kan opslaan (USB, een SMB-share).
+#
+# Een bestand dat permanent vies staat leert je `git status` niet meer te
+# lezen, en dat is juist de plek waar een onverwachte wijziging zichtbaar
+# hoort te worden.
+#
+# LET OP: dit geldt alleen voor bestanden die git nog niet kent. Staat er al
+# een `.DS_Store` in de index, dan is `git rm --cached .DS_Store` nodig.
+.DS_Store
+._*
